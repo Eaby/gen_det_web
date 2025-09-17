@@ -1,0 +1,17 @@
+# config.yaml (runtime-only)
+model:
+  backbone_name: "eva02_base_patch14_224"     # or the backbone you trained with
+  temporal_type: "transformer"                # "mean" or "transformer"
+  temporal_depth: 2
+  temporal_heads: 4
+
+dataset:
+  img_size: 224
+  patch_size: 14
+
+eval:
+  ece_bins: 15
+
+runtime:
+  device: "cuda"        # "cuda" or "cpu"
+  use_amp: true
