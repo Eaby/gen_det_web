@@ -1,0 +1,38 @@
+ui:
+  server_name: 0.0.0.0
+  server_port: 7860
+  title: "Generative Content Detector"
+  dark_mode_default: true
+  max_gallery_cols: 8
+
+models:
+  image:
+    name: CustomResNet50
+    ckpt: "/path/to/image_model.ckpt"
+  mixed:
+    name: UniTraxEnsemble
+    ckpt: "/media/eaby/Trained Files from New model/eva224_tt_balanced/best.pt"
+    config: "/rm_eaby/webBased_DeepFakePreProcess_Code/configs/default.yaml"
+  text:
+    name: CustomTextDetector
+    ckpt: "/path/to/text_model.pt"
+
+video:
+  fixed_interval: 30
+  motion_sensitivity: 1.5
+  landmark_jitter: 0.005
+  entropy_top_n: 12
+  scene_threshold: 0.4
+  freq_sample_every: 10
+  hybrid_z_sigma: 2.0
+
+verdict:
+  threshold_natural: 0.60
+  weights:
+    i_frames: 0.6
+    motion_frames: 1.0
+    landmark_jitter_frames: 0.6
+    fixed_frames: 0.5
+    entropy_frames: 1.2
+    scene_frames: 0.8
+    frequency_frames: 1.4
